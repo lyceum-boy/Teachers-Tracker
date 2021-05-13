@@ -9,8 +9,8 @@ absence and substitute teachers.
 
 from flask import Flask
 
-__author__ = ["Ilya B. Anosov", "Sofia P. Kalinina"]
-__credits__ = ["Georgiy A. Darovskih"]
+__author__ = "Ilya B. Anosov"
+__credits__ = ["Maria A. Zamaryokhina", "Sofia P. Kalinina"]
 __license__ = "GPL"
 __version__ = "1.0.1"
 __maintainer__ = "Ilya B. Anosov"
