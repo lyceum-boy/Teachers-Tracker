@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2 align="center">Учителя</h2>
+{% if current_user.is_authenticated %}
+<p align="justify">
+    <a href="departments" class="btn btn-secondary">Просмотреть Учеников</a>
+    <a href="addjob" class="btn btn-secondary">Добавить Учителя</a>
+</p>
+{% endif %}
+{% for teacher in teachers %}
+<h3>Учитель # {{ teacher.id }}</h3>
+<div class="table_container">
+    <table class="my_table">
+        <tr class="my_row">
+            <td class="title" width="150px" bgcolor="#dddddd">Фамилия</td>
+            <td class="title" width="150px" bgcolor="#dddddd">Имя</td>
+            <td class="title" width="150px" bgcolor="#dddddd">Отчество</td>
+            <td class="title" width="150px" bgcolor="#dddddd" align="center">
+                Возраст
+            </td>
+            <td class="title" width="200px" bgcolor="#dddddd">Адрес</td>
+            <td class="title" width="150px" bgcolor="#dddddd">Телефон</td>
+            <td class="title" width="200px" bgcolor="#dddddd">Email</td>
+        </tr>
+        <tr class="my_row">
+            <td class="ordinary" bgcolor="#eeeeff">
+                {{ teacher.surname.capitalize() }}
+            </td>
+            <td class="ordinary" bgcolor="#eeeeff">
+                {{ teacher.name.capitalize() }}
+            </td>
+            <td class="ordinary" bgcolor="#eeeeff" align="center">
+                {{ teacher.middle_name.capitalize() }}
+            </td>
+            <td class="ordinary" bgcolor="#eeeeff" align="center">
+                {{ teacher.age }}
+            </td>
+            <td class="ordinary" bgcolor="#eeeeff" align="center">
+                {{ teacher.address }}
+            </td>
+            <td class="ordinary" bgcolor="#eeeeff" align="center">
+                {{ teacher.phone }}
+            </td>
+            <td class="ordinary" bgcolor="#eeeeff" align="center">
+                {{ teacher.email }}
+            </td>
+        </tr>
+    </table>
+</div>
+<br>
+{% if current_user.id == 1  %}
+<div>
+    <a href="/jobs/{{ job.id }}" class="btn btn-warning">
+        Редактировать Учителя
+    </a>
+    <a href="/job_delete/{{ job.id }}" class="btn btn-danger">
+        Удалить Учителя
+    </a>
+</div>
+{% endif %}
+{% endfor %}
+{% endblock %}
