@@ -13,6 +13,8 @@ from flask import Flask
 import vk_api
 from vk_api.bot_longpoll import VkBotLongPoll, VkBotEventType
 
+from data import db_session
+
 __author__ = "Ilya B. Anosov"
 __credits__ = ["Maria A. Zamaryokhina", "Sofia P. Kalinina"]
 __license__ = "GPL"
@@ -54,6 +56,9 @@ def send_message(user_id, message):
 
 
 def main():
+    db_session.global_init("db/teachers-tracker.db")
+    app.run()
+
     vk_session = vk_api.VkApi(
         token=TOKEN)
 
@@ -72,8 +77,6 @@ def main():
                              random_id=random.randint(0, 2 ** 64))
 
     # ...
-
-    app.run()
 
 
 if __name__ == '__main__':
